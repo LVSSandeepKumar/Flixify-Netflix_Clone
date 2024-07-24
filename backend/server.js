@@ -10,6 +10,8 @@ dotenv.config();
 const app = express();
 const PORT = ENV_VARS.PORT;
 
+app.use(express.json());
+
 app.use("/api/v1/auth", authRoutes);
 
 app.listen(PORT, (req,res) => {
