@@ -20,12 +20,10 @@ export const signup = async (req, res) => {
     }
 
     if (password.length < 6) {
-      return res
-        .status(400)
-        .json({
-          success: false,
-          message: "Password must be atleast 6 characters long",
-        });
+      return res.status(400).json({
+        success: false,
+        message: "Password must be atleast 6 characters long",
+      });
     }
 
     const existingUsername = await User.findOne({ username: username });
@@ -78,5 +76,13 @@ export const login = async (req, res) => {
 };
 
 export const logout = async (req, res) => {
-  res.send("Logout Route");
+  try {
+    res.clearCookie("jwt");
+    return res.status(200).json({ success: true, message: "Logout Successful"})
+  } catch (error) {
+    console.log("Error in Signup controller :" + error.message);
+    return res
+      .status(500)
+      .json({ success: false, message: "Internal Server Error" });
+  }
 };
