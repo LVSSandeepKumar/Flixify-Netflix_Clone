@@ -19,7 +19,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     default: "",
   },
-  watchHistory: {
+  searchHistory: {
     type: Array,
     default: [],
   },
