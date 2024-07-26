@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Navbar from "../components/Navbar";
 import { Link } from "react-router-dom";
 
 const LoginPage = () => {
@@ -11,11 +12,11 @@ const LoginPage = () => {
   }
   return (
     <div className="h-screen w-full hero-bg">
-      <header className="max-w-6xl mx-auto flex justify-between items-center p-4">
-        <Link to="/">
-          <img src="flixify-logo.png" alt="logo" className="w-52" />
+      <Navbar>
+        <Link to={"/signup"} className="text-white bg-red-500 py-2 px-2 rounded">
+          Sign Up
         </Link>
-      </header>
+      </Navbar>
       <div className="flex justify-center items-center mt-20 mx-3">
         <div className="w-full max-w-md p-8 space-y-6 bg-black/60 rounded-lg shadow-md">
           <h1 className="text-2xl text-white text-center font-bold mb-4">
