@@ -1,14 +1,17 @@
 import { useState } from "react";
 import Navbar from "../components/Navbar";
 import { Link } from "react-router-dom";
+import { useAuthStore } from "../store/authUser";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSignup = (e) => {
+  const {login} = useAuthStore();
+
+  const handleLogin = (e) => {
     e.preventDefault();
-    console.log(email, password);
+    login({email, password});
   }
   return (
     <div className="h-screen w-full hero-bg">
@@ -22,7 +25,7 @@ const LoginPage = () => {
           <h1 className="text-2xl text-white text-center font-bold mb-4">
             Signup
           </h1>
-          <form className="space-y-4" onSubmit={handleSignup}>
+          <form className="space-y-4" onSubmit={handleLogin}>
             <div>
               <label
                 htmlFor="email"

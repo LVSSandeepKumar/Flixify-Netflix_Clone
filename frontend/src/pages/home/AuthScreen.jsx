@@ -1,10 +1,17 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Navbar from "../../components/Navbar";
 import { ChevronRight } from "lucide-react";
 import { useState } from "react";
 
 const AuthScreen = () => {
   const [email, setEmail] = useState("");
+  const navigate = useNavigate();
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    navigate("/signup?email="+ email);
+  }
+
   return (
     <div className="hero-bg relative">
       {/* Header Section */}
@@ -24,7 +31,7 @@ const AuthScreen = () => {
           Ready to watch? Create an account or restart your m embership
         </p>
 
-        <form className="flex flex-col md:flex-row gap-4 w-1/2">
+        <form className="flex flex-col md:flex-row gap-4 w-1/2" onSubmit={handleFormSubmit}>
           <input
             type="email"
             className="w-full px-3 py-2 mt-1 border border-gray-700 rounded-md bg-transparent text-white focus:outline-none focus:ring"
@@ -33,7 +40,7 @@ const AuthScreen = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-          <button className="w-full bg-red-600 text-white font-semibold rounded-md hover:bg-red-700 flex justify-center items-center px-2 lg:px-6 md:py-2 py-1">
+          <button className="w-full bg-red-600 text-white font-semibold rounded-md hover:bg-red-700 flex justify-center items-center px-2 lg:px-6 md:py-2 py-1" type="submit ">
             Get Started <ChevronRight className="size-8 md:size-10" />
           </button>
         </form>
