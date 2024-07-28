@@ -33,7 +33,10 @@ const HomeScreenNavbar = () => {
             TV Shows
           </Link>
           <Link to={"/search"} className="hover:underline">
-            Search History
+            Search
+          </Link>
+          <Link to={"/history"} className="hover:underline">
+            History
           </Link>
         </div>
       </div>
