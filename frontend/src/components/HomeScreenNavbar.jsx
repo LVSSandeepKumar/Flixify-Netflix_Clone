@@ -32,7 +32,7 @@ const HomeScreenNavbar = () => {
           <Link to={"/"} className="hover:underline" onClick={() => setContentType("tv")}>
             TV Shows
           </Link>
-          <Link to={"/history"} className="hover:underline">
+          <Link to={"/search"} className="hover:underline">
             Search History
           </Link>
         </div>
