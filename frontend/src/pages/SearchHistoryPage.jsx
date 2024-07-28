@@ -101,7 +101,7 @@ const SearchHistoryPage = () => {
                 {entry.searchType[0].toUpperCase() + entry.searchType.slice(1)}
               </span>
 
-              <Trash className="size-6 ml-4 cursor-pointer hover:fill-red-600 hover:text-red-600"
+              <Trash className="size-6 ml-1 cursor-pointer hover:fill-red-600 hover:text-red-600"
                 onClick={() => handleDelete(entry)}
               />
             </div>

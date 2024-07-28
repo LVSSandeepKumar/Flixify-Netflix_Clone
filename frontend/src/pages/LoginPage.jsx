@@ -2,21 +2,25 @@ import { useState } from "react";
 import Navbar from "../components/Navbar";
 import { Link } from "react-router-dom";
 import { useAuthStore } from "../store/authUser";
+import { Loader } from "lucide-react";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const {login} = useAuthStore();
+  const { login, isLoggingIn } = useAuthStore();
 
   const handleLogin = (e) => {
     e.preventDefault();
-    login({email, password});
-  }
+    login({ email, password });
+  };
   return (
     <div className="h-screen w-full hero-bg">
       <Navbar>
-        <Link to={"/signup"} className="text-white bg-red-500 py-2 px-2 rounded">
+        <Link
+          to={"/signup"}
+          className="text-white bg-red-500 py-2 px-2 rounded"
+        >
           Sign Up
         </Link>
       </Navbar>
@@ -57,8 +61,11 @@ const LoginPage = () => {
                 onChange={(e) => setPassword(e.target.value)}
               />
             </div>
-            <button className="w-full py-2 bg-red-600 text-white font-semibold rounded-md hover:bg-red-700">
-              Login
+            <button
+              className="w-full py-2 bg-red-600 text-white font-semibold rounded-md hover:bg-red-700"
+              disabled={isLoggingIn}
+            >
+              {isLoggingIn ? <Loader className="animate-spin" /> : "Login"}
             </button>
           </form>
           <div className="text-center text-gray-400">

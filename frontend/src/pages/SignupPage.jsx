@@ -1,5 +1,6 @@
 import { useState } from "react";
 import {Link} from "react-router-dom";
+import {Loader} from "lucide-react"
 import Navbar from "../components/Navbar";
 import { useAuthStore } from "../store/authUser";
 
@@ -10,7 +11,7 @@ const SignupPage = () => {
   const [email, setEmail] = useState(emailValue || "");
   const [password, setPassword] = useState("");
 
-  const {signup} = useAuthStore()
+  const {signup, isSigningup} = useAuthStore()
 
   const handleSignup = (e) => {
     e.preventDefault();
@@ -68,8 +69,10 @@ const SignupPage = () => {
                 onChange={(e) => setPassword(e.target.value)}
               />
             </div>
-            <button className="w-full py-2 bg-red-600 text-white font-semibold rounded-md hover:bg-red-700">
-              Signup
+            <button 
+            className="w-full py-2 bg-red-600 text-white font-semibold rounded-md hover:bg-red-700"
+            disabled={isSigningup}>
+              {isSigningup ? <Loader className="animate-spin"/> : "Sign Up"}
             </button>
           </form>
           <div className="text-center text-gray-400">
